@@ -12,16 +12,14 @@ const emailRegistro = async (datos) => {
 
     const { email, nombre, token} = datos;
     const info = await transporter.sendMail({
-        from: "APV - Administrador de Pacientes de Veterinaria",
+        from: process.env.EMAIL_USER,
         to: email,
-        subject: 'Comprueba tu cuenta en APV',
-        text: 'Comprueba tu cuenta en APV',
-        html: `<p>Hola: ${nombre}, comprueba tu cuente en APV. </p>
+        subject: 'Espero que puedas probar mi aplicacion en React',
+        text: 'Testing Development of Application',
+        html: `<p>Este es un mensaje para comprobar que todo este bien: ${nombre}, </p>
         
-                <p>Tu cuenta ya esta lista, solo debes comprobarla en el siguiente enlace:
+                <p>Prueba el link y espero que todo este bien:
                 <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Comprobar Cuenta</a> </p>
-
-                <p>Si tu no creaste esta cuenta, puedes ignorar este mensaje</p>
         `
     });
 

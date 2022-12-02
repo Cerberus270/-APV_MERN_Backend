@@ -90,6 +90,8 @@ const autenticar = async (req, res) => {
                 _id: usuario._id,
                 nombre: usuario.nombre,
                 email: usuario.email,
+                telefono: usuario.telefono,
+                web: usuario.web,
                 token: generarJWT(usuario.id)
             });
         } else {
@@ -181,7 +183,14 @@ const actualizarPerfil = async (req, res) => {
         veterinario.telefono = req.body.telefono;
 
         const veterinarioActualizado = await veterinario.save();
-        res.json(veterinarioActualizado);
+        console.log("Hola soy yo: ", veterinarioActualizado)
+        res.json({
+            _id: veterinarioActualizado._id,
+            nombre: veterinarioActualizado.nombre,
+            email: veterinarioActualizado.email,
+            telefono: veterinarioActualizado.telefono,
+            web: veterinarioActualizado.web,
+        });
     } catch (error) {
         console.log(error)
     }
